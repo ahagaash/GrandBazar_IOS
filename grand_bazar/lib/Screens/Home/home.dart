@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,6 +13,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //BODY
+      body: Stack(
+        children: [
+          const HomeListView(),
+        ],
+      ),
+
       //BOTTOM NAVIGATION BAR
       bottomNavigationBar: GNav(
           // rippleColor: Colors.grey, // tab button ripple color when pressed
