@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
+import 'Screens/Home/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,28 +38,40 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedSplashScreen(
-      splash: Column(children: [
-        Image.asset(
-          'assets/grandbazaarLogo.png',
-          height: 195.0,
-        ),
-        const Text(
-          'Grand Bazaar',
-          style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: Color.fromARGB(244, 247, 230, 4),
-              fontFamily: 'Abril Fatface'),
-        )
-      ]),
-      backgroundColor: const Color.fromARGB(255, 36, 35, 35),
-      nextScreen: const LoginScreen(),
-      splashIconSize: 250,
-      duration: 5000,
-      splashTransition: SplashTransition.fadeTransition,
-      pageTransitionType: PageTransitionType.leftToRightWithFade,
-      animationDuration: const Duration(seconds: 5),
+    // return AnimatedSplashScreen(
+    //   splash: Column(children: [
+    //     Image.asset(
+    //       'assets/grandbazaarLogo.png',
+    //       height: 195.0,
+    //     ),
+    //     const Text(
+    //       'Grand Bazaar',
+    //       style: TextStyle(
+    //           fontSize: 40,
+    //           fontWeight: FontWeight.bold,
+    //           color: Color.fromARGB(244, 247, 230, 4),
+    //           fontFamily: 'Abril Fatface'),
+    //     )
+    //   ]),
+    //   backgroundColor: const Color.fromARGB(255, 36, 35, 35),
+    //   nextScreen: const LoginScreen(),
+    //   splashIconSize: 250,
+    //   duration: 5000,
+    //   splashTransition: SplashTransition.fadeTransition,
+    //   pageTransitionType: PageTransitionType.leftToRightWithFade,
+    //   animationDuration: const Duration(seconds: 5),
+    // );
+    return MaterialApp(
+      title: 'Grand Bazar',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: Colors.white,
+              fontFamily: 'Montserrat',
+            ),
+      ),
+      home: const Home(),
     );
   }
 }
