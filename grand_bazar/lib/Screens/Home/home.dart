@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
+import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Util/constants/colourConstants.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -10,17 +12,41 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int page = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.white,
+          title: const Text('Offers', style: TextStyle(color: Colors.black)),
+          iconTheme: IconThemeData(color: Colors.black),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.notifications_active),
+              tooltip: 'Show Snackbar',
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('This is a snackbar')));
+              },
+            ),
+          ]),
+
       //BODY
-      body: Stack(
-        children: [
-          const HomeListView(),
-        ],
-      ),
+
+      body: page == 2
+          ? Center(child: CircularProgressIndicator())
+          : Stack(
+              children: [
+                const HomeListView(),
+              ],
+            ),
+
+      //DRAWER
+      drawer: const DrawerNavigationBar(),
 
       //BOTTOM NAVIGATION BAR
+
       bottomNavigationBar: GNav(
           // rippleColor: Colors.grey, // tab button ripple color when pressed
           // hoverColor: Colors.grey, // tab button hover color
@@ -37,7 +63,7 @@ class _HomeState extends State<Home> {
           duration: Duration(milliseconds: 900), // tab animation duration
           gap: 8, // the tab button gap between icon and text
           onTabChange: (value) => {
-                {print(value)}
+                {print(value), page = value, print('value'), print(page)}
               },
           color: Colors.black, // unselected icon color
           activeColor:
