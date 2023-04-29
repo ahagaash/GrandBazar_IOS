@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import '../Registration/registration.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -28,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final mobileField = TextFormField(
       autofocus: false,
       controller: mobileController,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.number,
       validator: (value) {
         RegExp regex = RegExp(r'^(?:[+0]9)?[0-9]{10}$');
 
@@ -150,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const LoginScreen()));
+                                            const RegistrationScreen()));
                               },
                               child: const Text("Sign Up",
                                   style: TextStyle(
