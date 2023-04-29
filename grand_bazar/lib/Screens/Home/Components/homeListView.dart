@@ -65,7 +65,7 @@ class _HomeListViewState extends State<HomeListView> {
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
-                      Image.asset('assets/grandbazaarLogo.png'),
+                      //Image.asset('assets/grandbazaarLogo.png'),
                     ],
                   ),
                 );

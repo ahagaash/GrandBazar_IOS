@@ -60,7 +60,7 @@ class _OfferListViewState extends State<OfferListView> {
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
-                      Image.asset('assets/grandbazaarLogo.png'),
+                      //Image.asset('assets/grandbazaarLogo.png'),
                     ],
                   ),
                 );
