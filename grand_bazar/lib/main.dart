@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'Screens/Home/home.dart';
+import 'Screens/offers/offers.dart';
 import 'Screens/stores/stores.dart';
 import 'Screens/stores/tabview.dart';
 
