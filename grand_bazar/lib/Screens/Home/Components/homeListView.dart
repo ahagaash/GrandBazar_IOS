@@ -34,11 +34,11 @@ class _HomeListViewState extends State<HomeListView> {
               itemCount: events.length,
               itemBuilder: (context, index) {
                 return Card(
-                  clipBehavior: Clip.antiAlias,
+                  //clipBehavior: Clip.antiAlias,
                   child: Column(
                     children: [
+                      Image.asset('assets/grandbazaarLogo.png'),
                       ListTile(
-                        leading: Icon(Icons.arrow_drop_down_circle),
                         title: Text(events[index].title),
                         onTap: () {
                           Navigator.push(
@@ -52,7 +52,7 @@ class _HomeListViewState extends State<HomeListView> {
                           );
                         },
                         subtitle: Text(
-                          'Secondary Text',
+                          events[index].title,
                           style:
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
@@ -65,7 +65,6 @@ class _HomeListViewState extends State<HomeListView> {
                               TextStyle(color: Colors.black.withOpacity(0.6)),
                         ),
                       ),
-                      Image.asset('assets/grandbazaarLogo.png'),
                     ],
                   ),
                 );

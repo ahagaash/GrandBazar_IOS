@@ -5,6 +5,8 @@ import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'Screens/Home/home.dart';
+import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Screens/DetailScreens/bazarTalkDetailPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,9 +70,9 @@ class SplashScreen extends StatelessWidget {
       title: 'Grand Bazar',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
+        //scaffoldBackgroundColor: Colors.white,
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
+              bodyColor: Colors.black,
               fontFamily: 'Montserrat',
             ),
       ),
