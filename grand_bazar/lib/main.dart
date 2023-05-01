@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:grand_bazar/Models/bazarEvents.dart';
+import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
@@ -57,7 +58,8 @@ class SplashScreen extends StatelessWidget {
         )
       ]),
       backgroundColor: const Color.fromARGB(255, 36, 35, 35),
-      nextScreen: const LoginScreen(),
+      // nextScreen: const LoginScreen(),
+      nextScreen: const ProfileScreen(),
       splashIconSize: 250,
       duration: 5000,
       splashTransition: SplashTransition.fadeTransition,
