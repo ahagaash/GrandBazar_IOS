@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Screens/Profile/profile.dart';
+import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 
 class Home extends StatefulWidget {
@@ -12,14 +14,58 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int page = 1;
+  int _selectedIndex = 0;
+  String _pageTitle = "";
+  Color appabarcolour = Colors.white;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    const HomeListView(),
+    const OfferListView(),
+    const OfferListView(),
+    const OfferListView(),
+    const ProfileScreen()
+  ];
+
+  void _onItemTapped(int index) {
+    if (index == 0) {
+      setState(() {
+        _pageTitle = '';
+        appabarcolour = Colors.white;
+      });
+    } else if (index == 1) {
+      setState(() {
+        _pageTitle = 'Offer';
+        appabarcolour = Colors.white;
+      });
+    } else if (index == 2) {
+      setState(() {
+        _pageTitle = 'News';
+        appabarcolour = Colors.white;
+      });
+    } else if (index == 3) {
+      setState(() {
+        _pageTitle = 'Shops';
+        appabarcolour = Colors.white;
+      });
+    } else if (index == 4) {
+      setState(() {
+        _pageTitle = 'profile';
+        appabarcolour = kPrimaryColor;
+      });
+    }
+
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const Text('Offers', style: TextStyle(color: Colors.black)),
+          backgroundColor: appabarcolour,
+          title: Text(_pageTitle, style: TextStyle(color: Colors.black)),
           iconTheme: IconThemeData(color: Colors.black),
           actions: <Widget>[
             IconButton(
@@ -34,13 +80,7 @@ class _HomeState extends State<Home> {
 
       //BODY
 
-      body: page == 2
-          ? Center(child: CircularProgressIndicator())
-          : Stack(
-              children: [
-                const HomeListView(),
-              ],
-            ),
+      body: _widgetOptions.elementAt(_selectedIndex),
 
       //DRAWER
       drawer: const DrawerNavigationBar(),
@@ -62,9 +102,7 @@ class _HomeState extends State<Home> {
           curve: Curves.easeOutExpo, // tab animation curves
           duration: Duration(milliseconds: 900), // tab animation duration
           gap: 8, // the tab button gap between icon and text
-          onTabChange: (value) => {
-                {print(value), page = value, print('value'), print(page)}
-              },
+          onTabChange: (value) => {_onItemTapped(value)},
           color: Colors.black, // unselected icon color
           activeColor:
               Color.fromARGB(255, 232, 191, 9), // selected icon and text color

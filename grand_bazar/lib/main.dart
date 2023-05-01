@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:grand_bazar/Models/bazarEvents.dart';
+import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'Screens/Home/home.dart';
-import 'Screens/offers/offers.dart';
-import 'Screens/stores/stores.dart';
-import 'Screens/stores/tabview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,7 +75,19 @@ class SplashScreen extends StatelessWidget {
               fontFamily: 'Montserrat',
             ),
       ),
-      home:  TabScreen(),
+      home: const Home(),
     );
+    // return MaterialApp(
+    //   title: 'Grand Bazar',
+    //   debugShowCheckedModeBanner: false,
+    //   theme: ThemeData(
+    //     scaffoldBackgroundColor: Colors.white,
+    //     textTheme: Theme.of(context).textTheme.apply(
+    //           bodyColor: Colors.white,
+    //           fontFamily: 'Montserrat',
+    //         ),
+    //   ),
+    //   home: const Home(),
+    // );
   }
 }
