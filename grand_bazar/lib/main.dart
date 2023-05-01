@@ -71,7 +71,7 @@ class SplashScreen extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         textTheme: Theme.of(context).textTheme.apply(
-              bodyColor: Colors.white,
+              bodyColor: Colors.black,
               fontFamily: 'Montserrat',
             ),
       ),
