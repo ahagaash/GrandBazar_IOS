@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 
@@ -23,30 +24,34 @@ class _HomeState extends State<Home> {
     const OfferListView(),
     const OfferListView(),
     const OfferListView(),
-    const OfferListView(),
+    const ProfileScreen()
   ];
 
   void _onItemTapped(int index) {
     if (index == 0) {
       setState(() {
         _pageTitle = '';
+        appabarcolour = Colors.white;
       });
     } else if (index == 1) {
       setState(() {
         _pageTitle = 'Offer';
+        appabarcolour = Colors.white;
       });
     } else if (index == 2) {
       setState(() {
         _pageTitle = 'News';
+        appabarcolour = Colors.white;
       });
     } else if (index == 3) {
       setState(() {
         _pageTitle = 'Shops';
+        appabarcolour = Colors.white;
       });
     } else if (index == 4) {
       setState(() {
         _pageTitle = 'profile';
-        appabarcolour = Colors.yellowAccent;
+        appabarcolour = kPrimaryColor;
       });
     }
 
