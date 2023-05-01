@@ -28,7 +28,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           minWidth: 180,
           onPressed: () {
-            const LoginScreen();
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
           },
           child: const Text(
             'SIGN OUT',

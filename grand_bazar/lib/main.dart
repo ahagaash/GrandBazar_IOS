@@ -6,6 +6,8 @@ import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'Screens/Home/home.dart';
+import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Screens/DetailScreens/bazarTalkDetailPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -58,8 +60,7 @@ class SplashScreen extends StatelessWidget {
         )
       ]),
       backgroundColor: const Color.fromARGB(255, 36, 35, 35),
-      // nextScreen: const LoginScreen(),
-      nextScreen: const ProfileScreen(),
+      nextScreen: const LoginScreen(),
       splashIconSize: 250,
       duration: 5000,
       splashTransition: SplashTransition.fadeTransition,
