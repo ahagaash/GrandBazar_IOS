@@ -58,10 +58,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: [
+                        children: const [
                           Icon(Icons.person_rounded, color: Colors.black),
-                          const SizedBox(width: 20.0),
-                          const Text(
+                          SizedBox(width: 20.0),
+                          Text(
                             'Fazlan Mohammed Fazil',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -72,10 +72,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: [
+                        children: const [
                           Icon(Icons.location_on, color: Colors.black),
-                          const SizedBox(width: 20.0),
-                          const Text(
+                          SizedBox(width: 20.0),
+                          Text(
                             'Wanguva kade',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -86,11 +86,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: [
+                        children: const [
                           Icon(Icons.mobile_friendly_sharp,
                               color: Colors.black),
-                          const SizedBox(width: 20.0),
-                          const Text(
+                          SizedBox(width: 20.0),
+                          Text(
                             '0775009240',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -101,10 +101,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: [
+                        children: const [
                           Icon(Icons.email_outlined, color: Colors.black),
-                          const SizedBox(width: 20.0),
-                          const Text(
+                          SizedBox(width: 20.0),
+                          Text(
                             'mffazlan@gmail.com',
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
@@ -115,6 +115,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Center(child: signOutButton),
+                      const SizedBox(
+                        height: 10.0,
+                      )
                     ]),
               )
             ],
