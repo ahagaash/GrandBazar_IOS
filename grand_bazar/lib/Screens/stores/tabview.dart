@@ -23,33 +23,39 @@ class _TabScreenState extends State<TabScreen> {
       if (_formKey.currentState!.validate()) {}
     }
 
-  return MaterialApp(  
-      home: DefaultTabController(  
-        length: 2,  
-        child: Scaffold(  
-          appBar: AppBar(  
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
             backgroundColor: Colors.white,
-            title: const Text('Stores',style: TextStyle(color: Colors.black),),  
-            bottom: const TabBar( 
-               indicatorColor: Colors.orange, 
-                indicatorWeight: 5,   
-              tabs: [  
-                Tab( child: Text("FOLLOWING",),),  
-                  Tab( child: Text("ALL STORES",),),  
-               
-              ],  
+            bottom: const TabBar(
+              indicatorColor: Colors.orange,
+              indicatorWeight: 5,
+              tabs: [
+                Tab(
+                  child: Text(
+                    "FOLLOWING",
+                  ),
+                ),
+                Tab(
+                  child: Text(
+                    "ALL STORES",
+                  ),
+                ),
+              ],
               labelColor: Colors.orange,
-            ),  
-          ),  
-          body: TabBarView(  
-            children: [  
-              FirstScreen(),  
-              SecondScreen(),  
-            ],  
-          ),  
-        ),  
-      ),  
-    );  
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              FirstScreen(),
+              SecondScreen(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
-
