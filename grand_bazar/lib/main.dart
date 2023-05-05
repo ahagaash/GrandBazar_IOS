@@ -65,29 +65,5 @@ class SplashScreen extends StatelessWidget {
       pageTransitionType: PageTransitionType.leftToRightWithFade,
       animationDuration: const Duration(seconds: 5),
     );
-    // return MaterialApp(
-    //   title: 'Grand Bazar',
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     scaffoldBackgroundColor: Colors.white,
-    //     textTheme: Theme.of(context).textTheme.apply(
-    //           bodyColor: Colors.white,
-    //           fontFamily: 'Montserrat',
-    //         ),
-    //   ),
-    //   home: const Home(),
-    // );
-    // return MaterialApp(
-    //   title: 'Grand Bazar',
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     scaffoldBackgroundColor: Colors.white,
-    //     textTheme: Theme.of(context).textTheme.apply(
-    //           bodyColor: Colors.white,
-    //           fontFamily: 'Montserrat',
-    //         ),
-    //   ),
-    //   home: const Home(),
-    // );
   }
 }
