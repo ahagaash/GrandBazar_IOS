@@ -16,7 +16,6 @@ class BazarTalkCard extends StatelessWidget {
         children: [
           Image.asset('assets/grandbazaarLogo.png'),
           ListTile(
-            leading: Icon(Icons.arrow_drop_down_circle),
             title: const Text(
               'Bazar Talk',
               style: TextStyle(color: Color.fromARGB(255, 157, 155, 155)),
@@ -28,16 +27,16 @@ class BazarTalkCard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(left: 300, bottom: 100),
             child: Text(
-              events.description,
+              '2023-10-11',
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 300, top: 1),
+            padding: const EdgeInsets.only(right: 10),
             child: Text(
-              '2023-10-11',
+              events.description,
               style: TextStyle(color: Colors.black.withOpacity(0.6)),
             ),
           ),
