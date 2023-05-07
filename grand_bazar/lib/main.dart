@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:grand_bazar/Models/bazarEvents.dart';
 import 'package:grand_bazar/Screens/DetailScreens/EventDetail/eventDetail.dart';
+import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart';
 import 'package:grand_bazar/Screens/Home/Components/detailScreen.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/Registration/registration.dart';
@@ -62,6 +63,7 @@ class SplashScreen extends StatelessWidget {
       ]),
       backgroundColor: const Color.fromARGB(255, 36, 35, 35),
       nextScreen: const LoginScreen(),
+      // nextScreen: const JanazaDetailScreen(),
       // nextScreen: const EventDetailScreen(),
       splashIconSize: 250,
       duration: 5000,
