@@ -49,13 +49,16 @@ class RegistrationUpperComponent extends StatelessWidget {
 }
 
 iconBackButton(BuildContext context) {
-  return IconButton(
-    color: kPrimaryColor,
-    alignment: Alignment.topRight,
-    iconSize: 28,
-    icon: const Icon(Icons.cancel),
-    onPressed: () {
-      Navigator.pop(context);
-    },
+  return Align(
+    alignment: Alignment.centerRight,
+    child: IconButton(
+      color: kPrimaryColor,
+      alignment: Alignment.topRight,
+      iconSize: 28,
+      icon: const Icon(Icons.cancel),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    ),
   );
 }
