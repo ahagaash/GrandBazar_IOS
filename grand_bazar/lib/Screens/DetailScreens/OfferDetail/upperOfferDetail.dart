@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class JanazaDetailUpperComponent extends StatelessWidget {
-  const JanazaDetailUpperComponent({Key? key, required this.imgUrl})
+class OfferDetailUpperComponent extends StatelessWidget {
+  const OfferDetailUpperComponent({Key? key, required this.imgUrl})
       : super(key: key);
   final String imgUrl;
   @override
@@ -12,7 +12,7 @@ class JanazaDetailUpperComponent extends StatelessWidget {
         Container(
           width: size.width,
           height: size.height / 2.6,
-          color: const Color.fromARGB(226, 182, 181, 181),
+          color: Color.fromARGB(255, 226, 47, 92),
           child: Padding(
             padding: const EdgeInsets.only(top: 0.0),
             child: Image.asset(
