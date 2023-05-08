@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:grand_bazar/Screens/Cards/components/ImageWidget.dart';
+import 'package:grand_bazar/Screens/Cards/components/bazarTalkCardBody.dart';
 
 import '../../Models/bazarEvents.dart';
+
+import 'package:glass/glass.dart';
 
 class BazarTalkCard extends StatelessWidget {
   const BazarTalkCard(
@@ -11,35 +15,14 @@ class BazarTalkCard extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Card(
-      clipBehavior: Clip.antiAlias,
+      elevation: 10.0,
+      clipBehavior: Clip.hardEdge,
       child: Column(
         children: [
-          Image.asset('assets/grandbazaarLogo.png'),
-          ListTile(
-            title: const Text(
-              'Bazar Talk',
-              style: TextStyle(color: Color.fromARGB(255, 157, 155, 155)),
-            ),
-            subtitle: Text(
-              events.title,
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 300, bottom: 100),
-            child: Text(
-              '2023-10-11',
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Text(
-              events.description,
-              style: TextStyle(color: Colors.black.withOpacity(0.6)),
-            ),
-          ),
+          NetworkImageWidget(
+              url:
+                  "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
+          BazarTalkCardBody(events: events)
         ],
       ),
     );

@@ -3,6 +3,8 @@ import 'package:grand_bazar/Models/bazarEvents.dart';
 import 'package:grand_bazar/Screens/Cards/bazarTalkCard.dart';
 import 'package:grand_bazar/Screens/Home/Components/detailScreen.dart';
 
+import 'package:glass/glass.dart';
+
 class OfferListView extends StatefulWidget {
   const OfferListView({Key? key}) : super(key: key);
 
@@ -27,6 +29,7 @@ class _OfferListViewState extends State<OfferListView> {
       body: events.isEmpty
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
+              shrinkWrap: false,
               itemCount: events.length,
               itemBuilder: (context, index) {
                 return BazarTalkCard(

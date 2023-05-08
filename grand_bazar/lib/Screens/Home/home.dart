@@ -6,6 +6,7 @@ import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Screens/stores/tabview.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -70,7 +71,7 @@ class _HomeState extends State<Home> {
           iconTheme: IconThemeData(color: Colors.black),
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.notifications_active),
+              icon: Icon(IconlyBroken.notification),
               tooltip: 'Show Snackbar',
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -114,23 +115,23 @@ class _HomeState extends State<Home> {
               horizontal: 20, vertical: 15), // navigation bar padding
           tabs: [
             GButton(
-              icon: Icons.home,
+              icon: IconlyBroken.home,
               text: 'Home',
             ),
             GButton(
-              icon: Icons.local_offer_sharp,
+              icon: IconlyBroken.discount,
               text: 'Offers',
             ),
             GButton(
-              icon: Icons.newspaper,
+              icon: IconlyBroken.document,
               text: 'News',
             ),
             GButton(
-              icon: Icons.shop_two_sharp,
+              icon: IconlyBroken.bag2,
               text: 'Shops',
             ),
             GButton(
-              icon: Icons.supervised_user_circle_sharp,
+              icon: IconlyBroken.profile,
               text: 'Profile',
             )
           ]),
