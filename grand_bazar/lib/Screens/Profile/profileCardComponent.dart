@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grand_bazar/Screens/Home/home.dart';
 
 class ProfileCardComponent extends StatelessWidget {
   const ProfileCardComponent({Key? key}) : super(key: key);
@@ -78,8 +79,14 @@ class ProfileCardComponent extends StatelessWidget {
                     const VerticalDivider(color: Colors.white, thickness: 1.5),
                     Expanded(
                       child: Column(
-                        children: const [
-                          Icon(Icons.settings),
+                        children: [
+                          InkWell(
+                              child: Icon(Icons.settings),
+                              onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Home()),
+                                  )),
                           Text(
                             'Settings',
                             style: TextStyle(
