@@ -4,6 +4,7 @@ import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
+import 'package:grand_bazar/Screens/offers/offers.dart';
 import 'package:grand_bazar/Screens/stores/tabview.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -23,7 +24,7 @@ class _HomeState extends State<Home> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     HomeListView(),
-    OfferListView(),
+    OfferScreen(),
     OfferListView(),
     TabScreen(),
     ProfileScreen()

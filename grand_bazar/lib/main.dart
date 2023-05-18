@@ -8,6 +8,7 @@ import 'package:grand_bazar/Screens/DetailScreens/StoreDetail/storeDetail.dart';
 import 'package:grand_bazar/Screens/Home/Components/detailScreen.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/Registration/registration.dart';
+import 'package:grand_bazar/Screens/offers/offers.dart';
 import 'package:grand_bazar/Util/ApiUtils/handleEventAPIcall.dart';
 import 'package:page_transition/page_transition.dart';
 import 'Screens/Login/login.dart';
@@ -68,6 +69,7 @@ class SplashScreen extends StatelessWidget {
       ]),
       backgroundColor: const Color.fromARGB(255, 36, 35, 35),
       nextScreen: const LoginScreen(),
+      // nextScreen: const OfferScreen(),
       // nextScreen: const StoreDetailScreen(),
       // nextScreen: const OfferDetailScreen(),
       // nextScreen: const JanazaDetailScreen(),
