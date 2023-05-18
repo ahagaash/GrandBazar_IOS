@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/Home/home.dart';
+import 'package:grand_bazar/Screens/Settings/settings.dart';
 
 class ProfileCardComponent extends StatelessWidget {
   const ProfileCardComponent({Key? key}) : super(key: key);
@@ -81,13 +82,14 @@ class ProfileCardComponent extends StatelessWidget {
                       child: Column(
                         children: [
                           InkWell(
-                              child: Icon(Icons.settings),
+                              child: const Icon(Icons.settings),
                               onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Home()),
+                                        builder: (context) =>
+                                            const SettingsScreen()),
                                   )),
-                          Text(
+                          const Text(
                             'Settings',
                             style: TextStyle(
                                 fontSize: 15.0, fontWeight: FontWeight.w600),

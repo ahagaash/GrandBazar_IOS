@@ -14,6 +14,31 @@ class _SettingsScreenState extends State<SettingsScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: Column(
+            children: [
+              Expanded(
+                child: IconButton(
+                  icon: const Icon(IconlyBroken.arrowLeft2,
+                      color: Color.fromARGB(214, 255, 174, 0)),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ),
+              // Expanded(
+              //   child: const Text(
+              //     'Back',
+              //     style: TextStyle(
+              //         color: Color.fromARGB(214, 255, 174, 0), fontSize: 18.0),
+              //   ),
+              // )
+            ],
+          ),
+          backgroundColor: Colors.white,
+          title: const Text(
+            'Settings',
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
         body: SizedBox(
           width: size.width,
           height: size.height,
