@@ -40,16 +40,21 @@ class _OfferScreenState extends State<OfferScreen> {
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: Row(
                           children: [
-                            const SizedBox(
-                              width: 100,
-                              height: 100,
-                              // child: Image.asset('assets/stores/store3.jpg'),
-                              // child: AspectRatio(
-                              // aspectRatio: 16 / 9, //aspect ratio for Image
-                              child: Image(
-                                image: AssetImage('assets/stores/store3.jpg'),
-                                fit: BoxFit
-                                    .fill, //fill type of image inside aspectRatio
+                            const Banner(
+                              message: '20% discount',
+                              location: BannerLocation.topEnd,
+                              color: Color.fromARGB(209, 255, 230, 0),
+                              child: SizedBox(
+                                width: 100,
+                                height: 100,
+                                // child: Image.asset('assets/stores/store3.jpg'),
+                                // child: AspectRatio(
+                                // aspectRatio: 16 / 9, //aspect ratio for Image
+                                child: Image(
+                                  image: AssetImage('assets/stores/store3.jpg'),
+                                  fit: BoxFit
+                                      .fill, //fill type of image inside aspectRatio
+                                ),
                               ),
                             ),
                             Padding(
