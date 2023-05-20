@@ -3,6 +3,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:grand_bazar/Screens/EventView/eventScreen.dart';
 import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
+import 'package:grand_bazar/Screens/JanazaNewsView/janazaView.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Screens/offers/offers.dart';
@@ -26,7 +27,7 @@ class _HomeState extends State<Home> {
   List<Widget> _widgetOptions = <Widget>[
     EventViewScreen(),
     OfferScreen(),
-    OfferListView(),
+    JanazaViewScreen(),
     TabScreen(),
     ProfileScreen()
   ];
