@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:grand_bazar/Screens/EventView/eventScreen.dart';
 import 'package:grand_bazar/Screens/Home/Components/homeListView.dart';
 import 'package:grand_bazar/Screens/Home/Components/drawer.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
@@ -23,7 +24,7 @@ class _HomeState extends State<Home> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    HomeListView(),
+    EventViewScreen(),
     OfferScreen(),
     OfferListView(),
     TabScreen(),
@@ -43,7 +44,7 @@ class _HomeState extends State<Home> {
       });
     } else if (index == 2) {
       setState(() {
-        _pageTitle = 'News';
+        _pageTitle = 'Janaza';
         appabarcolour = Colors.white;
       });
     } else if (index == 3) {
@@ -125,7 +126,7 @@ class _HomeState extends State<Home> {
             ),
             GButton(
               icon: IconlyBroken.document,
-              text: 'News',
+              text: 'Janaza',
             ),
             GButton(
               icon: IconlyBroken.bag2,
