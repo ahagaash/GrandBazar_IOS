@@ -29,6 +29,7 @@ class _TabScreenState extends State<TabScreen> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
+            toolbarHeight: 0.0,
             backgroundColor: Colors.white,
             bottom: const TabBar(
               indicatorColor: Colors.orange,
