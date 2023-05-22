@@ -16,8 +16,8 @@ import 'Screens/Home/home.dart';
 
 void main() {
   runApp(const MyApp());
-  HandleAPIcall.getAllevents(
-      'https://phpstack-819519-3498170.cloudwaysapps.com/api/v1/bazar-events/get-all');
+  // HandleAPIcall.getAllevents(
+  //     'https://phpstack-819519-3498170.cloudwaysapps.com/api/v1/bazar-events/get-all');
 }
 
 class MyApp extends StatelessWidget {
