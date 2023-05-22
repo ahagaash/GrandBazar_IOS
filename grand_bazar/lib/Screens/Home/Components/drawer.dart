@@ -3,6 +3,7 @@ import 'package:grand_bazar/Screens/DetailScreens/EventDetail/eventDetail.dart';
 import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart';
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/offerDetail.dart';
 import 'package:grand_bazar/Screens/DetailScreens/StoreDetail/storeDetail.dart';
+import 'package:grand_bazar/Screens/Settings/settings.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -109,6 +110,18 @@ class DrawerNavigationBar extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const StoreDetailScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(IconlyBroken.setting),
+            title: const Text('Settings'),
+            iconColor: kPrimaryColor,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SettingsScreen()),
               );
             },
           ),
