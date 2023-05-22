@@ -72,7 +72,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               ),
                               Expanded(
                                 child: Text(
-                                   stores![index].city.name,
+                             stores![index].region.name,
                                   style: TextStyle(
                                     fontSize: 13.0,
                                     color: Colors.black,

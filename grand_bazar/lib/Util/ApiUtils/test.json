@@ -4,11 +4,14 @@
     "name": "Baskin Robbins",
     "phone": "0774009384",
     "email": "booking@br.com",
-
     "city": {
       "id": 1,
       "name": "Kandy",
       "status": "Active"
+    },
+    "region": {
+      "id": 1,
+      "name": "Swiss Garden"
     }
   },
   {
@@ -21,6 +24,10 @@
       "id": 2,
       "name": "Kandy",
       "status": "Active"
+    },
+    "region": {
+      "id": 2,
+      "name": "Swiss Garden2"
     }
   }
 ]

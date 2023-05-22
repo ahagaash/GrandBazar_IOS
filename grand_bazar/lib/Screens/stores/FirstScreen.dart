@@ -24,7 +24,6 @@ class _FirstScreenState extends State<FirstScreen> {
   }
 
   getStore() async {
-    print("inside frontend ---------------------7777777777777");
     stores = await StoreService().getStores();
     if (stores != null) {
       setState(() {
@@ -72,7 +71,7 @@ class _FirstScreenState extends State<FirstScreen> {
                               ),
                               Expanded(
                                 child: Text(
-                                   stores![index].city.name,
+                                   stores![index].region.name,
                                   style: TextStyle(
                                     fontSize: 13.0,
                                     color: Colors.black,
