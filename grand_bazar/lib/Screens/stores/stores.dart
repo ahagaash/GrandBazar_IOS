@@ -16,8 +16,7 @@ class _StoreScreenState extends State<StoreScreen> {
   //form key
   final _formKey = GlobalKey<FormState>();
 
-
- List<StoreModel>? stores;
+  List<StoreModel>? stores;
 
   var isLoaded = false;
 
@@ -25,76 +24,74 @@ class _StoreScreenState extends State<StoreScreen> {
   void initState() {
     super.initState();
 
-  
-getStore();
+    getStore();
     // fetchUsers();
   }
- getStore() async {
-        print("inside frontend ---------------------7777777777777");
+
+  getStore() async {
+    print("inside frontend ---------------------7777777777777");
     stores = await StoreService().getStores();
     if (stores != null) {
       setState(() {
         isLoaded = true;
       });
     }
-
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-     
         body: Visibility(
           visible: isLoaded,
           child: ListView.builder(
             itemCount: stores?.length,
             itemBuilder: (context, index) {
               return ListTile(
-                  title: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
-                    child: Row(
-                      children:  <Widget>[
-                        Text(
-                          stores![index].name,
+                title: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
+                  child: Row(
+                    children: <Widget>[
+                      Text(
+                        stores![index].name,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      Expanded(
+                        child: Text(
+                          stores![index].city.name,
                           style: TextStyle(
-                            fontSize: 16.0,
+                            fontSize: 13.0,
                             color: Colors.black,
                           ),
-                          textAlign: TextAlign.left,
+                          textAlign: TextAlign.right,
                         ),
-                        Expanded(
-                          child: Text(
-                             stores![index].city.name,
-                            style: TextStyle(
-                              fontSize: 13.0,
-                              color: Colors.black,
-                            ),
-                            textAlign: TextAlign.right,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  subtitle: const Text(
-                    'KFC 11 (abbreviation of Kentucky Fried Chicken) is a',
-                    style: TextStyle(
-                      fontSize: 15.0,
-                      color: Colors.grey,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                  leading: Container(
-                    width: 50,
-                    height: 50,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/stores/store3.jpg'),
-                        fit: BoxFit.cover,
                       ),
+                    ],
+                  ),
+                ),
+                subtitle: const Text(
+                  'KFC 11 (abbreviation of Kentucky Fried Chicken) is a',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.grey,
+                  ),
+                  textAlign: TextAlign.left,
+                ),
+                leading: Container(
+                  width: 50,
+                  height: 50,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/stores/store3.jpg'),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                );
+                ),
+              );
             },
           ),
           replacement: const Center(
