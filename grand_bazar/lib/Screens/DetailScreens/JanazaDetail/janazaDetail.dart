@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/upperJanazaDetail.dart';
 
@@ -13,6 +14,38 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    //Bottom Popup Modal
+    final actionSheet = CupertinoActionSheet(
+      title: const Text(
+        "Navigate",
+        style: TextStyle(fontSize: 16, color: Colors.grey),
+      ),
+      // message: const Text(
+      //   "Call Seller",
+      //   style: TextStyle(fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+      // ),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: const Text(
+            "View in Google Maps",
+            style: TextStyle(
+                fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+          ),
+          onPressed: () {},
+        ),
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: const Text(
+          "Cancel",
+          style:
+              TextStyle(fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+
     //Direction Button
     final directionButton = Material(
       elevation: 5,
@@ -24,7 +57,10 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
           right: 30,
         ),
         minWidth: 180,
-        onPressed: () {},
+        onPressed: () {
+          showCupertinoModalPopup(
+              context: context, builder: (context) => actionSheet);
+        },
         child: const Text(
           'Get Direction',
           textAlign: TextAlign.center,

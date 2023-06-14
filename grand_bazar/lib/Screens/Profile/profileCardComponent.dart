@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:grand_bazar/Screens/Home/home.dart';
+
 import 'package:grand_bazar/Screens/Settings/settings.dart';
+import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 
 class ProfileCardComponent extends StatelessWidget {
-  const ProfileCardComponent({Key? key}) : super(key: key);
-
+  const ProfileCardComponent({Key? key, required this.userSession})
+      : super(key: key);
+  final UserSession userSession;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,9 +38,9 @@ class ProfileCardComponent extends StatelessWidget {
               const SizedBox(
                 height: 10.0,
               ),
-              const Center(
+              Center(
                   child: Text(
-                'Fazlan Mohammed Faleel',
+                userSession.customer.fullName,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
@@ -47,9 +49,11 @@ class ProfileCardComponent extends StatelessWidget {
               const SizedBox(
                 height: 7.0,
               ),
-              const Center(
+              Center(
                   child: Text(
-                'Madawala | Wanguwa kade',
+                userSession.customer.regionId.toString() +
+                    " | " +
+                    userSession.customer.areaId.toString(),
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 15.0,
