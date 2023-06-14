@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/Registration/registrationTitle.dart';
 import 'package:grand_bazar/Screens/Registration/upperComponent.dart';
+import 'package:grand_bazar/Util/ApiUtils/controller/userController.dart';
+import 'package:grand_bazar/Util/ApiUtils/model/UserModel.dart';
 
 import '../Login/login.dart';
 
@@ -26,8 +28,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    void signUp(String email, String password) {
-      if (_formKey.currentState!.validate()) {}
+    void signUp(String email, String password) async {
+      if (_formKey.currentState!.validate()) {
+        await UserController.registerUser(User(
+            fullName: nameController.text,
+            phone: mobileController.text,
+            email: email,
+            password: password,
+            areaId: 1,
+            cityId: 1,
+            regionId: 1));
+      }
     }
 
     //Name field

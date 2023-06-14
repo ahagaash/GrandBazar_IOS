@@ -8,11 +8,13 @@ import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Screens/offers/offers.dart';
 import 'package:grand_bazar/Screens/stores/tabview.dart';
+import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  final UserSession session;
+  Home({Key? key, required this.session}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -20,17 +22,28 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
+  late UserSession user;
+  late List<Widget> widgets;
+
+  void initState() {
+    super.initState();
+    user = widget.session;
+    widgets = _widgetOptions();
+  }
+
   String _pageTitle = "";
   Color appabarcolour = Colors.white;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  List<Widget> _widgetOptions = <Widget>[
-    EventViewScreen(),
-    OfferScreen(),
-    JanazaViewScreen(),
-    TabScreen(),
-    ProfileScreen()
-  ];
+  List<Widget> _widgetOptions() {
+    return [
+      EventViewScreen(),
+      OfferScreen(),
+      JanazaViewScreen(userSession: user),
+      TabScreen(),
+      ProfileScreen(session: user)
+    ];
+  }
 
   void _onItemTapped(int index) {
     if (index == 0) {
@@ -62,6 +75,7 @@ class _HomeState extends State<Home> {
 
     setState(() {
       _selectedIndex = index;
+      user = widget.session;
     });
   }
 
@@ -85,10 +99,12 @@ class _HomeState extends State<Home> {
 
       //BODY
 
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: widgets.elementAt(_selectedIndex),
 
       //DRAWER
-      drawer: const DrawerNavigationBar(),
+      drawer: DrawerNavigationBar(
+        userSession: user,
+      ),
 
       //BOTTOM NAVIGATION BAR
 
