@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grand_bazar/Screens/Home/home.dart';
+import 'package:grand_bazar/Util/ApiUtils/RequestBody/userLoginRequest.dart';
+import 'package:grand_bazar/Util/ApiUtils/controller/userController.dart';
 
+import '../../Util/ApiUtils/Responses/loginResponse.dart';
 import '../Registration/registration.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -23,12 +26,19 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     //login function
-    void signIn(String mobile, String password) {
+    void signIn(String mobile, String password) async {
       if (_formKey.currentState!.validate()) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Home()),
-        );
+        LoginResponse loginResponse = await UserController.loginUser(
+            UserLoginRequest(phone: mobile, password: password));
+        if (loginResponse.postReqResponse.status) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Home(session: loginResponse.userSession)),
+          );
+        } else {
+          print("LOGIN FAILED");
+        }
       }
     }
 

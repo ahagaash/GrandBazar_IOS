@@ -1,14 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart';
+import 'package:grand_bazar/Util/ApiUtils/controller/janazaController.dart';
+import 'package:grand_bazar/Util/ApiUtils/model/janazaModel.dart';
+import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 
 class JanazaViewScreen extends StatefulWidget {
-  const JanazaViewScreen({Key? key}) : super(key: key);
-
+  const JanazaViewScreen({Key? key, required this.userSession})
+      : super(key: key);
+  final UserSession userSession;
   @override
   State<JanazaViewScreen> createState() => _JanazaViewScreenState();
 }
 
 class _JanazaViewScreenState extends State<JanazaViewScreen> {
+  List<JanazaNews>? janazaNews;
+  int? length;
+
+  var isLoaded = false;
+  void initState() {
+    super.initState();
+
+    getJanazaNews();
+  }
+
+  getJanazaNews() async {
+    print("inside frontend ---------------------7777777777777");
+    janazaNews = JanazaController.getAllJanaza(widget.userSession.accessToken)
+        as List<JanazaNews>?;
+    if (janazaNews != null) {
+      setState(() {
+        isLoaded = true;
+        length = janazaNews?.length;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -19,7 +45,7 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
         height: size.height,
         child: ListView(
           children: [
-            for (int x = 1; x <= 5; x++) ...[
+            for (int x = 0; x <= length!; x++) ...[
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: InkWell(
@@ -40,7 +66,6 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                     child: SizedBox(
                       child: Column(
                         children: <Widget>[
-                          Image.asset('assets/janaza.jpg'),
                           Padding(
                             padding: const EdgeInsets.all(14),
                             child: Column(

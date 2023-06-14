@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Profile/profileCardComponent.dart';
 import 'package:grand_bazar/Screens/Profile/profileUpperComponent.dart';
+import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+  ProfileScreen({Key? key, required this.session}) : super(key: key);
+
+  UserSession session;
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -50,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           child: Stack(
             children: [
               const ProfileUpperComponent(),
-              const ProfileCardComponent(),
+              ProfileCardComponent(userSession: widget.session),
               Padding(
                 padding:
                     const EdgeInsets.only(top: 400.0, left: 20.0, right: 20.0),
@@ -58,11 +61,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           Icon(Icons.person_rounded, color: Colors.black),
                           SizedBox(width: 20.0),
                           Text(
-                            'Fazlan Mohammed Fazil',
+                            widget.session.customer.fullName,
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
@@ -72,11 +75,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: const [
+                        children: [
                           Icon(Icons.location_on, color: Colors.black),
                           SizedBox(width: 20.0),
                           Text(
-                            'Wanguva kade',
+                            widget.session.customer.areaId.toString(),
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
@@ -86,12 +89,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: const [
+                        children: [
                           Icon(Icons.mobile_friendly_sharp,
                               color: Colors.black),
                           SizedBox(width: 20.0),
                           Text(
-                            '0775009240',
+                            widget.session.customer.phone,
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
@@ -101,11 +104,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: const [
+                        children: [
                           Icon(Icons.email_outlined, color: Colors.black),
                           SizedBox(width: 20.0),
                           Text(
-                            'mffazlan@gmail.com',
+                            widget.session.customer.email,
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,

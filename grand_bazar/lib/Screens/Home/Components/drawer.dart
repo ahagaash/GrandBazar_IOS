@@ -4,13 +4,16 @@ import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/offerDetail.dart';
 import 'package:grand_bazar/Screens/DetailScreens/StoreDetail/storeDetail.dart';
 import 'package:grand_bazar/Screens/Settings/settings.dart';
+import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 
 class DrawerNavigationBar extends StatelessWidget {
-  const DrawerNavigationBar({Key? key}) : super(key: key);
+  const DrawerNavigationBar({Key? key, required this.userSession})
+      : super(key: key);
 
+  final UserSession userSession;
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -29,15 +32,15 @@ class DrawerNavigationBar extends StatelessWidget {
             ),
             child: Column(children: <Widget>[
               ProfilePicture(
-                name: 'Fazlan Mohamed',
+                name: userSession.customer.fullName,
                 radius: 50,
                 fontsize: 20,
               ),
               Spacer(
                 flex: 2, //
               ),
-              Text("Fazlan Mohamed"),
-              Text("Madawala"),
+              Text(userSession.customer.fullName),
+              Text(userSession.customer.areaId.toString()),
               // Divider(
               //   color: Colors.black,
               //   thickness: 1.5,
@@ -120,8 +123,7 @@ class DrawerNavigationBar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                    builder: (context) => const SettingsScreen()),
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               );
             },
           ),
