@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/upperOfferDetail.dart';
 
@@ -15,6 +16,38 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    //Bottom Popup Modal
+    final actionSheet = CupertinoActionSheet(
+      title: const Text(
+        "Action",
+        style: TextStyle(fontSize: 16, color: Colors.grey),
+      ),
+      // message: const Text(
+      //   "Call Seller",
+      //   style: TextStyle(fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+      // ),
+      actions: <Widget>[
+        CupertinoActionSheetAction(
+          child: const Text(
+            "Call Seller",
+            style: TextStyle(
+                fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+          ),
+          onPressed: () {},
+        ),
+      ],
+      cancelButton: CupertinoActionSheetAction(
+        child: const Text(
+          "Cancel",
+          style:
+              TextStyle(fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+
     //Direction Button
     final ContactSellerButton = Material(
       elevation: 5,
@@ -26,7 +59,10 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
           right: 30,
         ),
         minWidth: 180,
-        onPressed: () {},
+        onPressed: () {
+          showCupertinoModalPopup(
+              context: context, builder: (context) => actionSheet);
+        },
         child: const Text(
           'Contact Seller',
           textAlign: TextAlign.center,
