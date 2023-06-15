@@ -1,40 +1,36 @@
-import 'package:grand_bazar/Util/ApiUtils/model/janazaModel.dart';
 import 'dart:convert';
 
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:grand_bazar/Util/constants/apiurlConstants.dart';
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Models/bazarEvents.dart';
 
-class JanazaService {
-  static Future<List<JanazaNews>?> getAllJanazaNews(String tocken) async {
-    String token = tocken;
+import '../model/janazaModel.dart';
+import '../model/storeModel.dart';
 
-    print("Tocken IS " + token);
+class JanazaService {
+
+  Future<List<JanazaModel>?> getJanazas() async {
+
+    String token = "tsVjmzm0Tz7cN2zKzwFydNP0gGFcrAtNuLo2CHZb";
 
     var client = http.Client();
 
-    var uri = Uri.parse(baseUrl + janaza_get_all_url);
+    var uri = Uri.parse(
+        'https://phpstack-819519-3498170.cloudwaysapps.com/api/v1/janaza-news/get-all');
     var response =
         await client.get(uri, headers: {'Authorization': 'Bearer $token'});
     if (response.statusCode == 200) {
       final decodeData = jsonDecode(response.body);
 
-      print("decodeData-----------------11111111111111111111---------");
-      print(decodeData);
-
       final rawData = decodeData['data'];
       final encodeData = jsonEncode(rawData);
 
-      print("encodeData------------------2222222222222222222222--------");
-      print(encodeData);
-
-      return janazaNewsFromJson(encodeData);
+      return janazaModelFromJson(encodeData);
     }
   }
 }
