@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/upperJanazaDetail.dart';
 
 import '../../../Util/ApiUtils/model/janazaModel.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class JanazaDetailScreen extends StatefulWidget {
   JanazaDetailScreen({Key? key, required this.janazas}) : super(key: key);
@@ -35,7 +36,18 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
             style: TextStyle(
                 fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
           ),
-          onPressed: () {},
+          onPressed: () async {
+            bool? available = await MapLauncher.isMapAvailable(MapType.google);
+            if (available!) {
+              await MapLauncher.showMarker(
+                mapType: MapType.google,
+                coords: Coords(double.parse(widget.janazas.latitude),
+                    double.parse(widget.janazas.longitude)),
+                title: widget.janazas.personName,
+                description: widget.janazas.description,
+              );
+            }
+          },
         ),
       ],
       cancelButton: CupertinoActionSheetAction(

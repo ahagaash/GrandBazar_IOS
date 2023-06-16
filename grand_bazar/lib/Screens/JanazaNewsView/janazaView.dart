@@ -3,6 +3,7 @@ import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart
 import 'package:grand_bazar/Util/ApiUtils/controller/janazaController.dart';
 import 'package:grand_bazar/Util/ApiUtils/model/janazaModel.dart';
 import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 import '../../Util/ApiUtils/services/janazaService.dart';
 import '../Cards/components/ImageWidget.dart';
@@ -59,7 +60,8 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => JanazaDetailScreen( janazas:   janazas![index])),
+                          builder: (context) =>
+                              JanazaDetailScreen(janazas: janazas![index])),
                     );
                   },
                   child: Card(
