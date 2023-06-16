@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/upperJanazaDetail.dart';
 
+import '../../../Util/ApiUtils/model/janazaModel.dart';
+
 class JanazaDetailScreen extends StatefulWidget {
-  const JanazaDetailScreen({Key? key}) : super(key: key);
+  JanazaDetailScreen({Key? key, required this.janazas}) : super(key: key);
+
+  JanazaModel janazas;
 
   @override
   State<JanazaDetailScreen> createState() => _JanazaDetailScreenState();
@@ -107,8 +111,8 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
                           ),
                         ),
                         const SizedBox(height: 14),
-                        const Text(
-                          'Ameer',
+                        Text(
+                          widget.janazas.personName,
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 17.0,
@@ -122,9 +126,16 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
                                 alignment: Alignment.centerLeft,
                                 child: Expanded(
                                   child: Column(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        'Burial Date: 2021-08-09',
+                                        'Burial Date: ' +
+                                            widget.janazas.date.month
+                                                .toString() +
+                                            '/' +
+                                            widget.janazas.date.day.toString() +
+                                            '/' +
+                                            widget.janazas.date.year.toString(),
+                                        // 'Burial Date: 2021-08-09',
                                         style: TextStyle(
                                             fontSize: 14.0, color: Colors.grey),
                                       )
@@ -135,9 +146,10 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
                               const SizedBox(width: 45.0),
                               Expanded(
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     Text(
-                                      'Burial Time: 16:00:00',
+                                      'Burial Time:' +
+                                          widget.janazas.burialTime,
                                       style: TextStyle(
                                           fontSize: 14.0, color: Colors.grey),
                                     )
@@ -157,16 +169,21 @@ class _JanazaDetailScreenState extends State<JanazaDetailScreen> {
                         ),
                         const SizedBox(height: 12.0),
                         const Text(
-                          'Description',
+                          "Description",
+                          // 'Description',
                           style: TextStyle(
                             fontSize: 16.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         const SizedBox(height: 12.0),
-                        const Text(
-                          'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                        Text(
+                          widget.janazas.description,
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            color: Colors.grey,
+                          ),
+                          textAlign: TextAlign.justify,
                         ),
                         const SizedBox(height: 100.0),
                         Align(

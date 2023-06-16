@@ -76,7 +76,7 @@ class _FirstScreenState extends State<FirstScreen> {
                             ),
                             Expanded(
                               child: Text(
-                                stores![index].region.name,
+                               stores![index].region.name,
                                 style: TextStyle(
                                   fontSize: 13.0,
                                   color: Colors.black,
@@ -88,8 +88,9 @@ class _FirstScreenState extends State<FirstScreen> {
                         ),
                       ),
                     ),
-                    subtitle: const Text(
-                      'KFC  (abbreviation of Kentucky Fried Chicken) is a',
+                    subtitle:  Text(
+                     stores![index].description,
+                     maxLines: 2,
                       style: TextStyle(
                         fontSize: 15.0,
                         color: Colors.grey,

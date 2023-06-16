@@ -7,7 +7,7 @@ import 'package:grand_bazar/Screens/JanazaNewsView/janazaView.dart';
 import 'package:grand_bazar/Screens/Profile/profile.dart';
 import 'package:grand_bazar/Screens/offerScreen/offerListView.dart';
 import 'package:grand_bazar/Screens/offers/offers.dart';
-import 'package:grand_bazar/Screens/stores/tabview.dart';
+import 'package:grand_bazar/Screens/stores/stores.dart';
 import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
