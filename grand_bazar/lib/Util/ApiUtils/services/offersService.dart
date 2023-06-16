@@ -9,19 +9,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Models/bazarEvents.dart';
 
-import '../model/janazaModel.dart';
+import '../model/offersModel.dart';
+import '../model/offersModel.dart';
 import '../model/storeModel.dart';
 
-class JanazaService {
-
-  Future<List<JanazaModel>?> getJanazas() async {
-
+class OffersService {
+  Future<List<OffersModel>?> getOffers() async {
     String token = "tsVjmzm0Tz7cN2zKzwFydNP0gGFcrAtNuLo2CHZb";
 
     var client = http.Client();
 
     var uri = Uri.parse(
-        'https://phpstack-819519-3498170.cloudwaysapps.com/api/v1/janaza-news/get-all');
+        'https://phpstack-819519-3498170.cloudwaysapps.com/api/v1/todays-offers/get-all');
     var response =
         await client.get(uri, headers: {'Authorization': 'Bearer $token'});
     if (response.statusCode == 200) {
@@ -29,8 +28,9 @@ class JanazaService {
 
       final rawData = decodeData['data'];
       final encodeData = jsonEncode(rawData);
+      print("offers 1111" + encodeData);
 
-      return janazaModelFromJson(encodeData);
+      return offersModelFromJson(encodeData);
     }
   }
 }

@@ -4,6 +4,9 @@ import 'package:grand_bazar/Util/ApiUtils/controller/janazaController.dart';
 import 'package:grand_bazar/Util/ApiUtils/model/janazaModel.dart';
 import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 
+import '../../Util/ApiUtils/services/janazaService.dart';
+import '../Cards/components/ImageWidget.dart';
+
 class JanazaViewScreen extends StatefulWidget {
   const JanazaViewScreen({Key? key, required this.userSession})
       : super(key: key);
@@ -13,8 +16,8 @@ class JanazaViewScreen extends StatefulWidget {
 }
 
 class _JanazaViewScreenState extends State<JanazaViewScreen> {
-  List<JanazaNews>? janazaNews;
   int? length;
+  List<JanazaModel>? janazas;
 
   var isLoaded = false;
   void initState() {
@@ -24,36 +27,39 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
   }
 
   getJanazaNews() async {
-    print("inside frontend ---------------------7777777777777");
-    janazaNews = JanazaController.getAllJanaza(widget.userSession.accessToken)
-        as List<JanazaNews>?;
-    if (janazaNews != null) {
+    janazas = await JanazaService().getJanazas();
+
+    if (janazas != null) {
       setState(() {
         isLoaded = true;
-        length = janazaNews?.length;
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return SafeArea(
-      child: Scaffold(
-          body: SizedBox(
-        width: size.width,
-        height: size.height,
-        child: ListView(
-          children: [
-            for (int x = 0; x <= length!; x++) ...[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20),
+        child: Visibility(
+          visible: isLoaded,
+          child: ListView.builder(
+            itemCount: janazas?.length,
+            itemBuilder: (context, index) {
+              Divider(
+                thickness: 5,
+                color: Colors.grey[300],
+              );
+
+              return Padding(
+                padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                 child: InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => JanazaDetailScreen()),
+                          builder: (context) => JanazaDetailScreen( janazas:   janazas![index])),
                     );
                   },
                   child: Card(
@@ -66,6 +72,12 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                     child: SizedBox(
                       child: Column(
                         children: <Widget>[
+                          Container(
+                            child: const NetworkImageWidget(
+                                url:
+                                    "https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg"),
+                          ),
+                          // Image.asset('assets/janaza.jpg'),
                           Padding(
                             padding: const EdgeInsets.all(14),
                             child: Column(
@@ -78,9 +90,9 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Expanded(
                                           child: Column(
-                                            children: const [
+                                            children: [
                                               Text(
-                                                'JANAZA NEWS',
+                                                janazas![index].personName,
                                                 style: TextStyle(
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w500,
@@ -93,11 +105,11 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                       ),
                                       Expanded(
                                         child: Column(
-                                          children: const [
+                                          children: [
                                             Align(
                                               alignment: Alignment.centerRight,
                                               child: Text(
-                                                'DEC 21, 2021',
+                                                janazas![index].burialTime,
                                                 style: TextStyle(
                                                     fontSize: 14.0,
                                                     color: Colors.grey),
@@ -127,9 +139,23 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                         alignment: Alignment.centerLeft,
                                         child: Expanded(
                                           child: Column(
-                                            children: const [
+                                            children: [
                                               Text(
-                                                'Burial Date: 2021-08-09 ',
+                                                'Burial Date: ' +
+                                                    janazas![index]
+                                                        .date
+                                                        .month
+                                                        .toString() +
+                                                    '/' +
+                                                    janazas![index]
+                                                        .date
+                                                        .day
+                                                        .toString() +
+                                                    '/' +
+                                                    janazas![index]
+                                                        .date
+                                                        .year
+                                                        .toString(),
                                                 style: TextStyle(
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w500,
@@ -142,12 +168,13 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                       ),
                                       Expanded(
                                         child: Column(
-                                          children: const [
+                                          children: [
                                             Align(
                                               alignment: Alignment.centerRight,
                                               child: Text(
-                                                'Burial Time: 16:00:00',
-                                                style: TextStyle(
+                                                'Burial Time:' +
+                                                    janazas![index].burialTime,
+                                                style: const TextStyle(
                                                     fontSize: 14.0,
                                                     fontWeight: FontWeight.w500,
                                                     color: Color.fromARGB(
@@ -169,10 +196,11 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                 const SizedBox(
                                   height: 20.0,
                                 ),
-                                const Text(
-                                  'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                                Text(
+                                  janazas![index].description,
+                                  maxLines: 3,
                                   style: TextStyle(
-                                      fontSize: 16.0,
+                                      fontSize: 15.0,
                                       color:
                                           Color.fromARGB(255, 133, 131, 131)),
                                 ),
@@ -184,11 +212,14 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                     ),
                   ),
                 ),
-              )
-            ]
-          ],
+              );
+            },
+          ),
+          replacement: const Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
-      )),
+      ),
     );
   }
 }

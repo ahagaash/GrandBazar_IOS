@@ -7,6 +7,7 @@ import 'package:grand_bazar/Util/ApiUtils/controller/userController.dart';
 
 import '../../Util/ApiUtils/Responses/loginResponse.dart';
 import '../Registration/registration.dart';
+import '../dialogs/custom_dialog_box.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -19,6 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
   //form key
   final _formKey = GlobalKey<FormState>();
 
+  var isLoaded = false;
+
   //editing controller
   final TextEditingController mobileController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
@@ -30,13 +33,39 @@ class _LoginScreenState extends State<LoginScreen> {
       if (_formKey.currentState!.validate()) {
         LoginResponse loginResponse = await UserController.loginUser(
             UserLoginRequest(phone: mobile, password: password));
+
         if (loginResponse.postReqResponse.status) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Home(session: loginResponse.userSession)),
-          );
+          // Container(
+          //   child: const Center(
+          //     child: CircularProgressIndicator(),
+          //   ),
+          // );
+
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return const CustomDialogBox(
+                  title: "Sucessfull!",
+                  descriptions: "Login sucess",
+                  text: "OK",
+                );
+              }).whenComplete(() => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Home(session: loginResponse.userSession)),
+              ));
         } else {
+          showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return const CustomDialogBox(
+                  title: "failed  !",
+                  descriptions: "registration failed ",
+                  text: "OK",
+                );
+              });
+
           print("LOGIN FAILED");
         }
       }
