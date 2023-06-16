@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/Registration/registrationTitle.dart';
 import 'package:grand_bazar/Screens/Registration/upperComponent.dart';
+import 'package:grand_bazar/Util/ApiUtils/Responses/postRequestResponse.dart';
 import 'package:grand_bazar/Util/ApiUtils/controller/userController.dart';
 import 'package:grand_bazar/Util/ApiUtils/model/UserModel.dart';
+import 'package:grand_bazar/Util/constants/apiUserMessageConstants.dart';
 
 import '../Login/login.dart';
+import '../dialogs/custom_dialog_box.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -16,6 +19,8 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   //form key
   final _formKey = GlobalKey<FormState>();
+
+  late PostReqResponse postresponse;
 
   //editing controller
   final TextEditingController nameController = new TextEditingController();
@@ -30,14 +35,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
     void signUp(String email, String password) async {
       if (_formKey.currentState!.validate()) {
-        await UserController.registerUser(User(
+        postresponse = (await UserController.registerUser(User(
             fullName: nameController.text,
             phone: mobileController.text,
             email: email,
             password: password,
             areaId: 1,
             cityId: 1,
-            regionId: 1));
+            regionId: 1))) as PostReqResponse;
+      }
+      if (postresponse.status) {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return const CustomDialogBox(
+                title: "Sucessfull!",
+                descriptions: userRegisterSucuss,
+                text: "OK",
+              );
+            }).whenComplete(() => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(),
+            )));
+      } else {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return const CustomDialogBox(
+                title: "Failed!",
+                descriptions: userRegisterUnSucussfull,
+                text: "OK",
+              );
+            });
       }
     }
 
