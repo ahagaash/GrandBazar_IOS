@@ -56,7 +56,7 @@ class _FirstScreenState extends State<FirstScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => StoreDetailScreen()),
+                          builder: (context) => StoreDetailScreen(stores: stores![index])),
                     );
                   },
                   child: ListTile(

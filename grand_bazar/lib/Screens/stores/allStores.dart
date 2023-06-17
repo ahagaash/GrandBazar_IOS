@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../Util/ApiUtils/model/storeModel.dart';
 import '../../Util/ApiUtils/services/storeService.dart';
+import '../DetailScreens/StoreDetail/storeDetail.dart';
 
 class SecondScreen extends StatefulWidget {
   SecondScreen({Key? key}) : super(key: key);
@@ -51,6 +52,14 @@ class _SecondScreenState extends State<SecondScreen> {
 
               return Padding(
                 padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                   child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => StoreDetailScreen(stores: stores![index])),
+                    );
+                  },
                 child: ListTile(
                   title: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
@@ -100,6 +109,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     ),
                   ),
                 ),
+              )
               );
             },
           ),
