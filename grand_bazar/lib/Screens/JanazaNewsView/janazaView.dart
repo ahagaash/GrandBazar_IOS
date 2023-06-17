@@ -124,8 +124,8 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                   ),
                                 ),
                                 const SizedBox(height: 12.0),
-                                const Text(
-                                  'Ameer',
+                                Text(
+                                  janazas![index].personName,
                                   style: TextStyle(
                                     fontSize: 17.0,
                                     fontWeight: FontWeight.bold,
@@ -190,8 +190,8 @@ class _JanazaViewScreenState extends State<JanazaViewScreen> {
                                   ),
                                 ),
                                 const SizedBox(height: 12.0),
-                                const Text(
-                                  'Address: Malwanahinna',
+                                Text(
+                                  janazas![index].address,
                                   style: TextStyle(
                                       fontSize: 14.0, color: Colors.grey),
                                 ),
