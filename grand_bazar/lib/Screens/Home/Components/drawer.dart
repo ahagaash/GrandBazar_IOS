@@ -112,7 +112,7 @@ class DrawerNavigationBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const StoreDetailScreen()),
+                    builder: (context) => const OfferDetailScreen()),
               );
             },
           ),
