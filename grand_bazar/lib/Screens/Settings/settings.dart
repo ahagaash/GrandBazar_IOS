@@ -91,23 +91,28 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
                       Row(
-                        children: const [
-                          Icon(IconlyBroken.lock, color: Colors.black),
-                          SizedBox(width: 30.0),
+                        children: [
+                          const Icon(IconlyBroken.lock, color: Colors.black),
+                          const SizedBox(width: 30.0),
                           Expanded(
-                            child: Text(
-                              'Reset Password',
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 17.0,
-                                  letterSpacing: 1.0),
-                            ),
+                            child: InkWell(
+                                child: const Text(
+                                  'Reset Password',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      fontSize: 17.0,
+                                      letterSpacing: 1.0),
+                                ),
+                                onTap: () => openDialog()),
                           ),
                           // SizedBox(width: 110.0),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Icon(IconlyBroken.arrowRight2,
-                                  color: Colors.black))
+                          InkWell(
+                            child: const Align(
+                                alignment: Alignment.centerRight,
+                                child: Icon(IconlyBroken.arrowRight2,
+                                    color: Colors.black)),
+                            onTap: () => openDialog(),
+                          )
                         ],
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
@@ -142,4 +147,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+  //Reset Password Modal
+  Future openDialog() => showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+            title: const Text('Reset Password'),
+            content: const TextField(
+                autofocus: true,
+                obscureText: true,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.vpn_key),
+                  contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                  hintText: "Password",
+                  // border: OutlineInputBorder(
+                  //     borderRadius: BorderRadius.circular(10))
+                )),
+            actions: [
+              TextButton(
+                child: const Text('Cancel'),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              TextButton(
+                child: const Text('Submit'),
+                onPressed: () {},
+              ),
+            ],
+          ));
 }
