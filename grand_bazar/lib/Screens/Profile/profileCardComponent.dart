@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 import 'package:grand_bazar/Screens/Settings/settings.dart';
 import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
@@ -10,7 +11,7 @@ class ProfileCardComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50.0, left: 20.0, right: 20.0),
+      padding: const EdgeInsets.only(top: 25.0, left: 20.0, right: 20.0),
       child: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height / 2.8,
@@ -41,7 +42,7 @@ class ProfileCardComponent extends StatelessWidget {
               Center(
                   child: Text(
                 userSession.customer.fullName,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold),
@@ -54,7 +55,7 @@ class ProfileCardComponent extends StatelessWidget {
                 userSession.customer.regionId.toString() +
                     " | " +
                     userSession.customer.areaId.toString(),
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w500),
@@ -86,7 +87,7 @@ class ProfileCardComponent extends StatelessWidget {
                       child: Column(
                         children: [
                           InkWell(
-                              child: const Icon(Icons.settings),
+                              child: const Icon(IconlyBroken.setting),
                               onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
