@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:grand_bazar/Screens/EditProfile/editprofile.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -52,23 +53,40 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        children: const [
-                          Icon(IconlyBroken.editSquare, color: Colors.black),
-                          SizedBox(width: 30.0),
+                        children: [
+                          const Icon(IconlyBroken.editSquare,
+                              color: Colors.black),
+                          const SizedBox(width: 30.0),
                           Expanded(
-                            child: Text(
-                              'Edit Profile',
-                              style: TextStyle(
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontSize: 17.0,
-                                  letterSpacing: 1.0),
+                            child: InkWell(
+                              child: const Text(
+                                'Edit Profile',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontSize: 17.0,
+                                    letterSpacing: 1.0),
+                              ),
+                              onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const EditProfileScreen()),
+                              ),
                             ),
                           ),
                           // SizedBox(width: 150.0),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Icon(IconlyBroken.arrowRight2,
-                                  color: Colors.black))
+                          InkWell(
+                            child: const Align(
+                                alignment: Alignment.centerRight,
+                                child: Icon(IconlyBroken.arrowRight2,
+                                    color: Colors.black)),
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const EditProfileScreen()),
+                            ),
+                          )
                         ],
                       ),
                       Divider(height: 50.0, color: Colors.grey[600]),
