@@ -94,11 +94,11 @@ class DrawerNavigationBar extends StatelessWidget {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const OfferDetailScreen()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => const OfferDetailScreen()),
+              // );
             },
           ),
           ListTile(
@@ -109,11 +109,11 @@ class DrawerNavigationBar extends StatelessWidget {
               // Update the state of the app
               // ...
               // Then close the drawer
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const OfferDetailScreen()),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => const OfferDetailScreen()),
+              // );
             },
           ),
           ListTile(
