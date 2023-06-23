@@ -135,8 +135,8 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                           ),
                         ),
                         const SizedBox(height: 14),
-                         Text(
-                           widget.offers.title,
+                        Text(
+                          widget.offers.title,
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 17.0,
