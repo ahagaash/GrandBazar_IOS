@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grand_bazar/Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Profile/profileCardComponent.dart';
 import 'package:grand_bazar/Screens/Profile/profileUpperComponent.dart';
@@ -56,67 +57,67 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ProfileCardComponent(userSession: widget.session),
               Padding(
                 padding:
-                    const EdgeInsets.only(top: 400.0, left: 20.0, right: 20.0),
+                    const EdgeInsets.only(top: 360.0, left: 20.0, right: 20.0),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Icon(Icons.person_rounded, color: Colors.black),
-                          SizedBox(width: 20.0),
+                          const Icon(IconlyBroken.profile, color: Colors.black),
+                          const SizedBox(width: 20.0),
                           Text(
                             widget.session.customer.fullName,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
                                 letterSpacing: 1.0),
                           )
                         ],
                       ),
-                      Divider(height: 50.0, color: Colors.grey[600]),
+                      Divider(height: 40.0, color: Colors.grey[800]),
                       Row(
                         children: [
-                          Icon(Icons.location_on, color: Colors.black),
-                          SizedBox(width: 20.0),
+                          const Icon(IconlyBroken.location,
+                              color: Colors.black),
+                          const SizedBox(width: 20.0),
                           Text(
                             widget.session.customer.areaId.toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
                                 letterSpacing: 1.0),
                           )
                         ],
                       ),
-                      Divider(height: 50.0, color: Colors.grey[600]),
+                      Divider(height: 40.0, color: Colors.grey[800]),
                       Row(
                         children: [
-                          Icon(Icons.mobile_friendly_sharp,
-                              color: Colors.black),
-                          SizedBox(width: 20.0),
+                          const Icon(IconlyBroken.call, color: Colors.black),
+                          const SizedBox(width: 20.0),
                           Text(
                             widget.session.customer.phone,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
                                 letterSpacing: 1.0),
                           )
                         ],
                       ),
-                      Divider(height: 50.0, color: Colors.grey[600]),
+                      Divider(height: 40.0, color: Colors.grey[800]),
                       Row(
                         children: [
-                          Icon(Icons.email_outlined, color: Colors.black),
-                          SizedBox(width: 20.0),
+                          const Icon(IconlyBroken.message, color: Colors.black),
+                          const SizedBox(width: 20.0),
                           Text(
                             widget.session.customer.email,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 15.0,
                                 letterSpacing: 1.0),
                           )
                         ],
                       ),
-                      Divider(height: 50.0, color: Colors.grey[600]),
+                      Divider(height: 40.0, color: Colors.grey[800]),
                       Center(child: signOutButton),
                       const SizedBox(
                         height: 10.0,
