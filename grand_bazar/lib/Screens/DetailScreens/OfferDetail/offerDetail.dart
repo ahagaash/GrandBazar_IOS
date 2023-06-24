@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/upperOfferDetail.dart';
 
 import '../../../Util/ApiUtils/model/offersModel.dart';
@@ -37,7 +38,10 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
             style: TextStyle(
                 fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
           ),
-          onPressed: () {},
+          onPressed: ()async {
+              //  await FlutterPhoneDirectCaller.callNumber(widget.offers.store.phone);
+              await FlutterPhoneDirectCaller.callNumber("0774782111");
+          },
         ),
       ],
       cancelButton: CupertinoActionSheetAction(
