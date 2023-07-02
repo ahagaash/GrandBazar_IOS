@@ -4,6 +4,7 @@ import 'package:grand_bazar/Screens/DetailScreens/JanazaDetail/janazaDetail.dart
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/offerDetail.dart';
 import 'package:grand_bazar/Screens/DetailScreens/StoreDetail/storeDetail.dart';
 import 'package:grand_bazar/Screens/Settings/settings.dart';
+import 'package:grand_bazar/Screens/WorkInProgress/WorkInProgressPage.dart';
 import 'package:grand_bazar/Util/ApiUtils/sessionManager/userSession.dart';
 import 'package:grand_bazar/Util/constants/colourConstants.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
@@ -82,7 +83,7 @@ class DrawerNavigationBar extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const EventDetailScreen()),
+                    builder: (context) => const WorkInProgressScreen()),
               );
             },
           ),
