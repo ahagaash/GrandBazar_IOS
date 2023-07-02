@@ -21,6 +21,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
 
   var isLoaded = false;
+  var _isObsecured;
+
+  @override
+  void initState() {
+    super.initState();
+    _isObsecured = true;
+  }
 
   //editing controller
   final TextEditingController mobileController = new TextEditingController();
@@ -117,12 +124,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
           return null;
         },
-        obscureText: true,
+        obscureText: _isObsecured,
         onSaved: (value) {
           passwordController.text = value!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
+            suffixIcon: IconButton(
+              padding: const EdgeInsetsDirectional.only(end: 12.0),
+              icon: _isObsecured
+                  ? const Icon(Icons.visibility)
+                  : const Icon(Icons.visibility_off),
+              onPressed: () {
+                setState(() {
+                  _isObsecured = !_isObsecured;
+                });
+              },
+            ),
             prefixIcon: const Icon(Icons.vpn_key),
             contentPadding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
             hintText: "Password",
