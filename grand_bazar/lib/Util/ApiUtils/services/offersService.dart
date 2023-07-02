@@ -14,7 +14,7 @@ import '../model/offersModel.dart';
 import '../model/storeModel.dart';
 
 class OffersService {
-  Future<List<OffersModel>?> getOffers() async {
+  Future<List<OfferModel>?> getOffers() async {
     String token = "tsVjmzm0Tz7cN2zKzwFydNP0gGFcrAtNuLo2CHZb";
 
     var client = http.Client();
@@ -30,7 +30,7 @@ class OffersService {
       final encodeData = jsonEncode(rawData);
       print("offers 1111" + encodeData);
 
-      return offersModelFromJson(encodeData);
+      return offerModelFromJson(encodeData);
     }
   }
 }

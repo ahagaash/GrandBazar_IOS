@@ -2,10 +2,15 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:grand_bazar/Screens/DetailScreens/OfferDetail/upperOfferDetail.dart';
 
+import '../../../Util/ApiUtils/model/offersModel.dart';
+
 class OfferDetailScreen extends StatefulWidget {
-  const OfferDetailScreen({Key? key}) : super(key: key);
+  OfferDetailScreen({Key? key, required this.offers}) : super(key: key);
+
+  OfferModel offers;
 
   @override
   State<OfferDetailScreen> createState() => _OfferDetailScreenState();
@@ -33,7 +38,10 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
             style: TextStyle(
                 fontSize: 20, color: Color.fromARGB(237, 252, 167, 9)),
           ),
-          onPressed: () {},
+          onPressed: ()async {
+              //  await FlutterPhoneDirectCaller.callNumber(widget.offers.store.phone);
+              await FlutterPhoneDirectCaller.callNumber("0774782111");
+          },
         ),
       ],
       cancelButton: CupertinoActionSheetAction(
@@ -98,18 +106,18 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Center(
-                          child: SizedBox(
-                            height: 100,
-                            child: Image.asset(
-                              "assets/dominos.png",
-                              fit: BoxFit.contain,
+                            // child: SizedBox(
+                            //   height: 100,
+                            //   child: Image.asset(
+                            //     "assets/dominos.png",
+                            //     fit: BoxFit.contain,
+                            //   ),
+                            // ),
                             ),
-                          ),
-                        ),
                         const SizedBox(height: 0.5),
-                        const Center(
+                        Center(
                           child: Text(
-                            "Domino's",
+                            widget.offers.store.name,
                             style: TextStyle(
                                 color: Color.fromARGB(255, 0, 0, 0),
                                 fontSize: 18.0,
@@ -131,8 +139,8 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                           ),
                         ),
                         const SizedBox(height: 14),
-                        const Text(
-                          'Buy 1 Get 1 FREE',
+                        Text(
+                          widget.offers.title,
                           style: TextStyle(
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontSize: 17.0,
@@ -146,9 +154,17 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                 alignment: Alignment.centerLeft,
                                 child: Expanded(
                                   child: Column(
-                                    children: const [
+                                    children: [
                                       Text(
-                                        'Start Date: 2021-08-20',
+                                        'Start Date : ' +
+                                            widget.offers.startDate.year
+                                                .toString() +
+                                            '-' +
+                                            widget.offers.startDate.month
+                                                .toString() +
+                                            '-' +
+                                            widget.offers.startDate.day
+                                                .toString(),
                                         style: TextStyle(
                                             fontSize: 14.0, color: Colors.grey),
                                       )
@@ -159,9 +175,17 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                               const SizedBox(width: 77.0),
                               Expanded(
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     Text(
-                                      'End Date: 2021-08-22',
+                                      'End Date : ' +
+                                          widget.offers.endDate.year
+                                              .toString() +
+                                          '-' +
+                                          widget.offers.startDate.month
+                                              .toString() +
+                                          '-' +
+                                          widget.offers.startDate.day
+                                              .toString(),
                                       style: TextStyle(
                                           fontSize: 14.0, color: Colors.grey),
                                     )
@@ -180,8 +204,8 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                           ),
                         ),
                         const SizedBox(height: 12.0),
-                        const Text(
-                          'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss',
+                        Text(
+                          widget.offers.description,
                           style: TextStyle(fontSize: 16.0, color: Colors.grey),
                         ),
                         const SizedBox(height: 40.0),
