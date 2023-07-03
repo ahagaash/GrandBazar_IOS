@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+
     _isObsecured = true;
   }
 
@@ -38,8 +39,18 @@ class _LoginScreenState extends State<LoginScreen> {
     //login function
     void signIn(String mobile, String password) async {
       if (_formKey.currentState!.validate()) {
+        setState(() {
+          isLoaded = true;
+        });
+
         LoginResponse loginResponse = await UserController.loginUser(
             UserLoginRequest(phone: mobile, password: password));
+
+        if (loginResponse != null) {
+          setState(() {
+            isLoaded = false;
+          });
+        }
 
         if (loginResponse.postReqResponse.status) {
           // Container(
@@ -68,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
               builder: (BuildContext context) {
                 return const CustomDialogBox(
                   title: "failed  !",
-                  descriptions: "registration failed ",
+                  descriptions: "Login failed",
                   text: "OK",
                 );
               });
@@ -168,66 +179,69 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Center(
-          child: SingleChildScrollView(
-              child: Container(
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.all(36.0),
-              child: Form(
-                  key: _formKey,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                            height: 150,
-                            child: Image.asset(
-                              "assets/grandbazaarLogo.png",
-                              fit: BoxFit.contain,
-                            )),
+        body: isLoaded
+            ? Center(child: CircularProgressIndicator())
+            : Center(
+                child: SingleChildScrollView(
+                    child: Container(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: const EdgeInsets.all(36.0),
+                    child: Form(
+                        key: _formKey,
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                  height: 150,
+                                  child: Image.asset(
+                                    "assets/grandbazaarLogo.png",
+                                    fit: BoxFit.contain,
+                                  )),
 
-                        const SizedBox(height: 25),
+                              const SizedBox(height: 25),
 
-                        //Label to display top of fields
-                        const Text(
-                          'Login to your account',
-                          style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
+                              //Label to display top of fields
+                              const Text(
+                                'Login to your account',
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 0, 0, 0),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold),
+                              ),
 
-                        const SizedBox(height: 25),
-                        mobileField,
-                        const SizedBox(height: 25),
-                        passwordField,
-                        const SizedBox(height: 25),
-                        loginButton,
-                        const SizedBox(height: 15),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text("Don't have an account? "),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegistrationScreen()));
-                              },
-                              child: const Text("Sign Up",
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 188, 4),
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 16)),
-                            )
-                          ],
-                        )
-                      ])),
-            ),
-          )),
-        ));
+                              const SizedBox(height: 25),
+                              mobileField,
+                              const SizedBox(height: 25),
+                              passwordField,
+                              const SizedBox(height: 25),
+                              loginButton,
+                              const SizedBox(height: 15),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text("Don't have an account? "),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const RegistrationScreen()));
+                                    },
+                                    child: const Text("Sign Up",
+                                        style: TextStyle(
+                                            color: Color.fromARGB(
+                                                255, 255, 188, 4),
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 16)),
+                                  )
+                                ],
+                              )
+                            ])),
+                  ),
+                )),
+              ));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:grand_bazar/Screens/Home/home.dart';
+import 'package:grand_bazar/Screens/Login/login.dart';
 import 'package:grand_bazar/Screens/Settings/settings.dart';
 
 class WorkInProgressScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class WorkInProgressScreen extends StatelessWidget {
         )
       ]),
       backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-      nextScreen: const SettingsScreen(),
+      nextScreen: LoginScreen(),
       splashIconSize: 250,
       duration: 10000,
       splashTransition: SplashTransition.fadeTransition,

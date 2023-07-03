@@ -124,7 +124,8 @@ class DrawerNavigationBar extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+                MaterialPageRoute(
+                    builder: (context) => SettingsScreen(session: userSession)),
               );
             },
           ),

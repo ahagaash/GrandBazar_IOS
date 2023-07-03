@@ -91,8 +91,8 @@ class ProfileCardComponent extends StatelessWidget {
                               onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SettingsScreen()),
+                                        builder: (context) => SettingsScreen(
+                                            session: userSession)),
                                   )),
                           const Text(
                             'Settings',

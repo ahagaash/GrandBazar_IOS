@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:grand_bazar/Screens/EditProfile/editprofile.dart';
+import 'package:grand_bazar/Util/ApiUtils/RequestBody/changePassword.dart';
+
+import '../../Util/ApiUtils/Responses/postRequestResponse.dart';
+import '../../Util/ApiUtils/controller/userController.dart';
+import '../../Util/ApiUtils/sessionManager/userSession.dart';
+import '../../Util/constants/apiUserMessageConstants.dart';
+import '../Login/login.dart';
+import '../dialogs/custom_dialog_box.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  final UserSession session;
+  SettingsScreen({Key? key, required this.session}) : super(key: key);
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  final TextEditingController _controller = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller.addListener(() {
+      final password = _controller.text;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -152,8 +171,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future openDialog() => showDialog(
       context: context,
       builder: (context) => AlertDialog(
-            title: const Text('Reset Password'),
-            content: const TextField(
+            title: Text('Reset Password'),
+            content: TextField(
+                controller: _controller,
                 autofocus: true,
                 obscureText: true,
                 decoration: InputDecoration(
@@ -172,7 +192,38 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               TextButton(
                 child: const Text('Submit'),
-                onPressed: () {},
+                onPressed: () async {
+                  PostReqResponse postresponse =
+                      await UserController.changePassword(
+                          UserPasswordChangeRequest(password: _controller.text),
+                          widget.session.customer.id.toString());
+
+                  if (postresponse.status) {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomDialogBox(
+                            title: "Sucessfull!",
+                            descriptions: userPasswordChanged,
+                            text: "OK",
+                          );
+                        }).whenComplete(() => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginScreen(),
+                        )));
+                  } else {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const CustomDialogBox(
+                            title: "Failed!",
+                            descriptions: userPasswordNotChanged,
+                            text: "OK",
+                          );
+                        });
+                  }
+                },
               ),
             ],
           ));
