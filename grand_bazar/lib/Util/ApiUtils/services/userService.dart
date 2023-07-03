@@ -47,12 +47,17 @@ class UserService {
           },
           body: json.encode(loginRequest.toJson()));
       print(response.statusCode);
-      userSession = UserSession.fromJson(jsonDecode(response.body));
-      return ResponseBuilder(
-          statusCode: response.statusCode, userSession: userSession);
+      if (response.statusCode == 202) {
+        userSession = UserSession.fromJson(jsonDecode(response.body));
+
+        return ResponseBuilder(
+            statusCode: response.statusCode, userSession: userSession);
+      } else {
+        return ResponseBuilder.m(01);
+      }
     } on Exception catch (_, ex) {
       print(ex);
-      return ResponseBuilder(statusCode: 01, userSession: userSession!);
+      return ResponseBuilder.m(01);
     }
   }
 

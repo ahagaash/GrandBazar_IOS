@@ -5,9 +5,10 @@ import 'package:grand_bazar/Util/constants/apiUserMessageConstants.dart';
 
 class LoginResponse {
   PostReqResponse postReqResponse;
-  UserSession userSession;
+  late UserSession userSession;
 
   LoginResponse({required this.postReqResponse, required this.userSession});
+  LoginResponse.m(this.postReqResponse);
 
   static Future<LoginResponse> getResponse(
       ResponseBuilder responseBuilder) async {
@@ -29,9 +30,7 @@ class LoginResponse {
         postReqResponse = PostReqResponse(
             status: false, message: userLoginUnSucussfull, code: 01);
         print('failed');
-        response = LoginResponse(
-            postReqResponse: postReqResponse,
-            userSession: responseBuilder.userSession);
+        response = LoginResponse.m(postReqResponse);
         return response;
     }
   }
@@ -39,7 +38,8 @@ class LoginResponse {
 
 class ResponseBuilder {
   int statusCode;
-  UserSession userSession;
+  late UserSession userSession;
 
   ResponseBuilder({required this.statusCode, required this.userSession});
+  ResponseBuilder.m(this.statusCode);
 }

@@ -4,10 +4,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:grand_bazar/Screens/Home/home.dart';
 import 'package:grand_bazar/Util/ApiUtils/RequestBody/userLoginRequest.dart';
 import 'package:grand_bazar/Util/ApiUtils/controller/userController.dart';
+import 'package:grand_bazar/Util/constants/colourConstants.dart';
 
 import '../../Util/ApiUtils/Responses/loginResponse.dart';
 import '../Registration/registration.dart';
 import '../dialogs/custom_dialog_box.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -45,14 +47,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
         LoginResponse loginResponse = await UserController.loginUser(
             UserLoginRequest(phone: mobile, password: password));
-
-        if (loginResponse != null) {
+        print("eqwfcevewdvwv");
+        print(loginResponse.postReqResponse.status);
+        if (loginResponse.postReqResponse.status) {
           setState(() {
             isLoaded = false;
           });
-        }
-
-        if (loginResponse.postReqResponse.status) {
           // Container(
           //   child: const Center(
           //     child: CircularProgressIndicator(),
@@ -74,6 +74,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         Home(session: loginResponse.userSession)),
               ));
         } else {
+          setState(() {
+            isLoaded = false;
+          });
           showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -180,7 +183,12 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
         backgroundColor: Colors.white,
         body: isLoaded
-            ? Center(child: CircularProgressIndicator())
+            ? Center(
+                child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: kPrimaryColor,
+                  size: 200,
+                ),
+              )
             : Center(
                 child: SingleChildScrollView(
                     child: Container(
